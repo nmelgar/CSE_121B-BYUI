@@ -36,6 +36,15 @@ document.getElementById("subtractNumbers").addEventListener('click', subtractNum
 
 // Step 7: Using arrow functions, repeat Steps 1-5 with new functions named multiply and mulitplyNumbers and HTML form controls with IDs of factor1, factor2, product and multiplyNumbers
 
+multiply = (number5, number6) => number5 * number6;
+multiplyNumbers = () => {
+    let num5 = parseInt(document.querySelector("#factor1").value);
+    let num6 = parseInt(document.querySelector("#factor2").value);
+    document.getElementById("product").value = multiply(num5, num6);
+}
+document.getElementById("multiplyNumbers").addEventListener('click', multiplyNumbers);
+
+
 // Step 8: Using any of the three function declaration types, repeat Steps 1-5 with new functions named divide and divideNumbers and HTML form controls with IDs of dividend, divisor, quotient and divideNumbers
 function divide(number7, number8) {
     return number7 / number8;
@@ -44,7 +53,7 @@ function divide(number7, number8) {
 function divideNumbers() {
     let num7 = parseInt(document.querySelector("#dividend").value);
     let num8 = parseInt(document.querySelector("#divisor").value);
-    document.getElementById("quotient").value = subtract(num7, num8);
+    document.getElementById("quotient").value = divide(num7, num8);
 }
 document.getElementById("divideNumbers").addEventListener('click', divideNumbers);
 
