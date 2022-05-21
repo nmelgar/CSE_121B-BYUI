@@ -124,6 +124,7 @@ function reset() {
 // Step 8: Declare a function named sortBy that does the following:
 let temple1 = temples.templeName
 let temple2 = temples.templeName
+
 function sortBy() {
     let sortedData = data.sort((temple1, temple2) => {
         if (temple1.templeName > temple2.templeName)
