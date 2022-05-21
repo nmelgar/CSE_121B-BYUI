@@ -16,7 +16,6 @@ let message;
 if (day <= 5) {
     message = "Hang in there!";
     dayOutput.innerHTML = message;
-    console.log(message);
 } else {
     message = "Woohoo! Is is the weekend!";
 }
@@ -70,6 +69,7 @@ dayOutput2.innerHTML = message2;
 
 let temples = [];
 
+
 function output(temples) {
     let divContainer = document.getElementById("temples")
 
@@ -113,12 +113,36 @@ async function getTemples() {
 
 getTemples();
 
+
+
 // Step 7: Declare a function named reset that clears all of the <article> elements from the HTML element with an ID of temples
+function reset() {
+    document.getElementById("temples").innerHTML = "";
+}
+
 
 // Step 8: Declare a function named sortBy that does the following:
+let temple1 = temples.templeName
+let temple2 = temples.templeName
+function sortBy() {
+    let sortedData = data.sort((temple1, temple2) => {
+        if (temple1.templeName > temple2.templeName)
+            return 1
+        else if (temple1.templeName < temple2.templeName)
+            return -1
+        else
+            return 0;
+    })
+    console.log(sortedData)
+}
+
+console.log(sortBy)
+
+
 // - Calls the reset function
 // - Sorts the global temple list by the currently selected value of the HTML element with an ID of sortBy
 // - Calls the output function passing in the sorted list of temples
+
 
 // Step 9: Add a change event listener to the HTML element with an ID of sortBy that calls the sortBy function
 
