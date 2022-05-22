@@ -7,7 +7,7 @@
 // Step 4: Declare a variable to hold a message that will be displayed
 // Step 5: Using an if statement, if the day of the week is a weekday (i.e. Monday - Friday), set the message variable to the string 'Hang in there!'
 // Step 6: Using an else statement, set the message variable to 'Woohoo!  It is the weekend!'
-const newDay = new Date();
+let newDay = new Date();
 let day = newDay.getDay();
 
 let dayOutput = document.getElementById("message1");
@@ -105,47 +105,67 @@ function output(temples) {
 // Step 4: In the function, using the built-in fetch method, call this absolute URL: 'https://byui-cse.github.io/cse121b-course/week05/temples.json'. Create a variable to hold the response from your fetch. You should have the program wait on this line until it finishes.
 // Step 5: Convert your fetch response into a Javascript object ( hint: .json() ). Store this in the templeList variable you declared earlier (Step 1). Make sure the the execution of the code waits here as well until it finishes.
 // Step 6: Finally, call the output function and pass it the list of temples. Execute your getTemples function to make sure it works correctly.
-async function getTemples() {
-    let data = fetch('https://byui-cse.github.io/cse121b-course/week05/temples.json')
-    data = await (await data).json();
-    output(data);
-}
+// async function getTemples() {
+//     let data = fetch('https://byui-cse.github.io/cse121b-course/week05/temples.json')
+//     data = await (await data).json();
+//     output(data);
+// }
 
+// getTemples();
+
+let getTemples = async () => {
+    let response = await fetch(
+        "https://byui-cse.github.io/cse121b-course/week05/temples.json"
+    );
+    data = await response.json();
+    output(data);
+};
 getTemples();
 
 
-
 // Step 7: Declare a function named reset that clears all of the <article> elements from the HTML element with an ID of temples
+// Step 8: Declare a function named sortBy that does the following:
+// - Calls the reset function
+// - Sorts the global temple list by the currently selected value of the HTML element with an ID of sortBy
+// - Calls the output function passing in the sorted list of temples
+// Step 9: Add a change event listener to the HTML element with an ID of sortBy that calls the sortBy function
+
 function reset() {
     document.getElementById("temples").innerHTML = "";
 }
 
+let sortBy = () => {
+    reset();
 
-// Step 8: Declare a function named sortBy that does the following:
-let temple1 = temples.templeName
-let temple2 = temples.templeName
+    let templeFilter = document.getElementById("sortBy").value;
 
-function sortBy() {
-    let sortedData = data.sort((temple1, temple2) => {
-        if (temple1.templeName > temple2.templeName)
-            return 1
-        else if (temple1.templeName < temple2.templeName)
-            return -1
-        else
-            return 0;
-    })
-    console.log(sortedData)
-}
+    switch (templeFilter) {
+        case "templeNameAscending":
+            output(
+                data.sort((t1, t2) => {
+                    let temple1 = t1.templeName;
+                    let temple2 = t2.templeName;
+                    if (temple1 < temple2) return -1;
+                    else if (temple1 > temple2) return 1;
+                    else return 0;
+                })
+            );
+            break;
+        case "templeNameDescending":
+            output(
+                data.sort((t1, t2) => {
+                    let temple1 = t1.templeName;
+                    let temple2 = t2.templeName;
+                    if (temple1 > temple2) return -1;
+                    else if (temple1 < temple2) return 1;
+                    else return 0;
+                })
+            );
+            break;
 
-console.log(sortBy)
-
-
-// - Calls the reset function
-// - Sorts the global temple list by the currently selected value of the HTML element with an ID of sortBy
-// - Calls the output function passing in the sorted list of temples
-
-
-// Step 9: Add a change event listener to the HTML element with an ID of sortBy that calls the sortBy function
+    }
+};
+document.querySelector("#sortBy").addEventListener("change", sortBy);
 
 /* STRETCH */
 
