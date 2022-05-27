@@ -1,29 +1,25 @@
-
-//  create a random number
-function getRandom(quotesArrayLength) {
-    let randomNumber = (Math.floor(Math.random() * quotesArrayLength.length))
-    console.log(randomNumber)
-    // console.log(typeof randomNumber);
-    return randomNumber
-    
-}
-
 //  create the quote in html
-let quotes = []
+let randomNumber;
+// // let quotes = []
+
 
 function showQuotes(quotes) {
-    let quotesContainer = document.querySelector(".quotes-container")
-    quotes.forEach(quote => {
-        let quoteParagraph = document.createElement("p")
-        quoteParagraph.innerHTML = '"' + quote.cita + '"';
+    randomNumber = (Math.floor(Math.random() * quotes.length));
 
-        quotesContainer.appendChild(quoteParagraph)
-    })
+    let quotesContainer = document.querySelector(".quotes-container");
 
-    // quotes.randomNumber
-    // console.log(quotes[0])
+    let quoteParagraph = document.createElement("h3")
+    quoteParagraph.innerHTML = '"' + quotes[randomNumber].cita + '"';
+    quotesContainer.appendChild(quoteParagraph)
+
+    let quoteParagraph2 = document.createElement("p")
+    quoteParagraph2.innerHTML = "-" + quotes[randomNumber].autor;
+    quotesContainer.appendChild(quoteParagraph2);
 
 }
+
+
+
 
 
 //  to get the quotes
@@ -33,6 +29,10 @@ const getQuotes = async () => {
 
     //this returns a promise
     showQuotes(quotesData);
-    getRandom(quotesData);
 };
 getQuotes();
+
+let randomQuote = document.getElementById('new-quote').addEventListener("click", showQuotes);
+// document.getElementById("new-quote").onclick = function () {
+//     showQuotes()
+// };
