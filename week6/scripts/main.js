@@ -1,38 +1,50 @@
 //  create the quote in html
-let randomNumber;
-// // let quotes = []
+// let randomNumber;
+// function getRandom(quotesNumbers){
+//     randomNumber = (Math.floor(Math.random() * quotesNumbers.length));
+//     return randomNumber
+// }
+
+let quotes = []
+
+function quotesLength(quotesLen){
+    length = quotesLen.length
+    return length
+}
 
 
-function showQuotes(quotes) {
-    randomNumber = (Math.floor(Math.random() * quotes.length));
+function newQuote(quotes) {
+    // randomNumber = (Math.floor(Math.random() * 2));
 
     let quotesContainer = document.querySelector(".quotes-container");
 
     let quoteParagraph = document.createElement("h3")
-    quoteParagraph.innerHTML = '"' + quotes[randomNumber].cita + '"';
+    quoteParagraph.innerHTML = '"' + quotes[1].cita + '"';
     quotesContainer.appendChild(quoteParagraph)
-
-    let quoteParagraph2 = document.createElement("p")
-    quoteParagraph2.innerHTML = "-" + quotes[randomNumber].autor;
-    quotesContainer.appendChild(quoteParagraph2);
 
 }
 
-
-
+// function newQuote(quotes){
+//     let generateQuote = quotes[Math.floor(Math.random() * quotes.length)];
+//     let printQuote = document.getElementById('quote-here');
+//     printQuote.textContent = generateQuote;
+// }
 
 
 //  to get the quotes
-const getQuotes = async () => {
-    const responseQuotes = await fetch("https://nmelgar.github.io/citas_lds_spanish_json/citas_lds_spanish.json");
-    const quotesData = await responseQuotes.json();
-
+let getQuotes = async () => {
+    let response = await fetch(
+        "https://nmelgar.github.io/citas_lds_spanish_json/citas_lds_spanish.json"
+    );
+    quotesData = await response.json();
+    
     //this returns a promise
-    showQuotes(quotesData);
+    newQuote(quotesData);
+    quotesLength(quotesData);
 };
 getQuotes();
 
-let randomQuote = document.getElementById('new-quote').addEventListener("click", showQuotes);
+let randomQuote = document.getElementById('new-quote').addEventListener("click", newQuote);
 // document.getElementById("new-quote").onclick = function () {
 //     showQuotes()
 // };
