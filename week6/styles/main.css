@@ -1,132 +1,49 @@
-/* HTML Selectors */
+* {
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
 article {
-    margin: 10px;
-}
-
-body {
-    font-family: 'Kalam', cursive;
-}
-
-div {
-    margin: 10px;
-    text-align: center;
-}
-
-footer {
-    background-color: gray;
-    color: white;
-    padding: 5px;
-    text-align: center;
-}
-
-header {
-    margin: auto;
-    text-align: center;
-}
-
-img {
-    width: 80%;
-}
-
-label {
-    display: inline-block;
-    min-width: 120px;
-    text-align: right;
-}
-
-main {
-    text-align: center;
-}
-
-nav {
-    background-color: black;
-    color: white;
-}
-
-nav ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: space-around;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li:first-child {
-    display: block;
-}
-
-nav ul li {
-    display: none;
-    list-style: none;
-    margin: 10px;
-}
-
-nav ul li a {
-    color: white;
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-}
-nav ul li a:hover {
-    background-color: #efefef;
-    color: black;
-}
-
-section {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-}
-
-
-/* Class Selectors */
-.active {
-    background-color: white;
-    color: black;
-}
-
-.open li {
-    display: block;
-}
-
-/* ID Selectors */
-#favorite-foods, #hobbies, #places-lived {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: inline-block;
-    text-align: left;
-    vertical-align: top;
-}
-
-#temples {
+    margin: 15px;
+    border: 1px solid black;
+    padding: 15px;
     display: grid;
-    grid-template-columns: 1fr;
+    align-items: center;
+
+}
+
+#quotes-container {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    margin-top: 20px;
+    justify-items: center;
+    width: 100%;
+}
+
+.quote-paragraph {
+    font-size: 1.2em;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.quote-autor {
+    text-align: right;
+    margin-top: 30px;
+    font-weight: 400;
 }
 
 /* Media Queries */
-@media only screen and (min-width: 32.5em) {
-    nav ul {
-        flex-direction: row;
-    }
-    
-    nav ul li:first-child {
-        display: none;
+@media (max-width: 910px) {
+    #quotes-container {
+        grid-template-columns: 100% !important;
     }
 
-    nav ul li {
-        display: inline;
-        margin: 0 10px;
+    .quote-autor {
+        margin-top: 20px;
     }
 
-    #temples {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media only screen and (min-width: 64em) {
-    #temples {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 }
